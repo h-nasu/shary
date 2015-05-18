@@ -1,0 +1,48 @@
+
+<div class="row col-lg-offset-2 col-lg-8">
+<h2>Users</h2>
+<alert ng-if="success" type="success" close="closeAlert()">
+  New User is Added!
+</alert>
+
+<button class="btn btn-default" ng-click="userRegister()">
+  Register New User
+</button>
+<br><br>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <span class="glyphicon glyphicon-search"></span>
+    </span>
+    <input ng-model="searchUser" type="text" class="form-control" placeholder="Search User">
+  </div>
+  
+
+<div class="media animateLists" ng-repeat="user in usersFiltered = ( users | filter:searchUser | startFrom:(userCurrentPage-1)*pageSize | limitTo:pageSize)">
+  
+  <div>
+    <h4 class="media-body">{{user.username}}</h4>
+    <label>Email:</label>&nbsp;{{user.email}}<br>
+    <label>Space Limit:</label>&nbsp;{{user.spaceLimit}} GB<br>
+    <label>Total Space Usage:</label>&nbsp;{{user.totalUsage}}<br>
+  </div>
+  <div>
+    <button class="btn btn-info btn-sm" ng-init="edit = false; admin = user.admin;" ng-click="edit = ! edit" ng-switch="edit">
+      <span ng-switch-when="false">Edit</span>
+      <span ng-switch-when="true">Close</span>
+    </button>
+    <button class="btn btn-warning btn-sm" ng-click="deleteUser(user)">
+      Delete
+    </button>
+  </div>
+  <div>
+    <div collapse="!edit">
+      <div ng-include src="'templates/userForm.tpl.html'" ng-init="userId = user.id; spaceLimit = user.spaceLimit"></div>
+    </div>
+    <hr>
+  </div>
+</div>
+
+<pagination total-items="fileTotalItems" items-per-page="pageSize" num-pages="noOfPages" ng-model="fileCurrentPage" max-size="pagerMaxSize" class="pagination-sm" boundary-links="true" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+</div>
+

@@ -1,0 +1,46 @@
+<form class="form-horizontal well" name="uploadForm" role="form" ng-controller="UserFormCtrl" novalidate>
+  <div class="form-group">
+  <label class="col-sm-2 control-label">Space Limit</label>
+  <div class="col-sm-10">
+    <input class="form-control" type="number" ng-model="spaceLimit" placeholder="Space Limit in GB (1GB as default)" />
+  </div>
+  <div class="col-sm-10 col-md-push-2">
+  <button class="btn btn-default btn-sm" ng-click="changeUserSetting(spaceLimit)">
+    Change Setting
+  </button>
+  <span ng-if="setrlt">
+    {{setrlt}}
+  </span>
+  </div>
+  
+  </div>
+  <hr>
+  <div class="form-group">
+  <label class="col-sm-2 control-label">Password</label>
+  <div class="col-sm-10">
+    <input class="form-control" type="password" ng-model="password" placeholder="Change Password" />
+    <button class="btn btn-default btn-sm" ng-click="changeUserPassword(password)">
+      Change Password
+    </button>
+    <span ng-if="pwrlt">
+      {{pwrlt}}
+    </span>
+  </div>
+  </div>
+  <hr>
+  <div class="form-group">
+  <label class="col-sm-2 control-label">Admin</label>
+  <div class="col-sm-10">
+    <input type="checkbox" ng-model="admin" ng-change="adminChange()"/>
+  </div>
+  </div>
+  <hr>
+  <input type="hidden" ng-show="userId" value="{{userId}}" />
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    <button class="btn btn-info btn-sm" ng-click="close()">
+      Close
+    </button>
+    </div>
+  </div>
+</form> 

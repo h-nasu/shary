@@ -1,0 +1,40 @@
+<form class="form-horizontal well" name="uploadForm" role="form" ng-controller="UploadFormCtrl" novalidate>
+  <div class="form-group">
+  <label class="col-sm-2 control-label">Add Tags</label>
+  <div class="col-sm-10">
+  <tags-input ng-model="tags" 
+                placeholder="Add a tag" 
+                replace-spaces-with-dashes="false"
+                on-tag-added="tagAdded($tag)"
+                on-tag-removed="tagRemoved($tag)">
+      <auto-complete source="autoLoadTags($query)" 
+                     min-length="0" 
+                     debounce-delay="0"
+                     max-results-to-show="10"></auto-complete>
+    </tags-input>
+  
+  </div>
+  </div>
+  <hr>
+  <div class="form-group">
+  <label class="col-sm-2 control-label">Password</label>
+  <div class="col-sm-10">
+    <input class="form-control" type="password" ng-model="password" placeholder="Set Password for Download" />
+    <button class="btn btn-default btn-sm" ng-click="addPassword(password)">
+      Set Password
+    </button>
+    <span ng-if="pwrlt">
+      {{pwrlt}}
+    </span>
+  </div>
+  </div>  
+  <hr>
+  <input type="hidden" ng-show="fileId" value="{{fileId}}" />
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    <button class="btn btn-info btn-sm" ng-click="close()">
+      Close
+    </button>
+    </div>
+  </div>
+</form> 

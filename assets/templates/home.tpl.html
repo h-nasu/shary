@@ -1,0 +1,77 @@
+
+<div class="row col-lg-offset-2 col-lg-8 home-search">
+  <!--
+  <div class="alert alert-info" role="alert">Free File Sharing Space! Up to 1GB!</div>
+  -->
+  
+  <button class="btn btn-info searchBtn" type="button" data-toggle="collapse" data-target="#searchArea" aria-expanded="false" aria-controls="searchArea">
+    Search Filter
+  </button>
+  
+  
+  <div class="collapse" id="searchArea">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-search"></span>
+      </span>
+      <input ng-model="searchText" type="text" class="form-control" placeholder="Search Keyword">
+    </div>
+    
+    <tags-input ng-model="tags" 
+                placeholder="Search Tags" 
+                replace-spaces-with-dashes="false">
+      <auto-complete source="autoLoadTags($query)" 
+                     min-length="0" 
+                     debounce-delay="0"
+                     max-results-to-show="10"></auto-complete>
+    </tags-input>
+    <label>Sort By:&nbsp;</label><a href="" ng-click="predicate = 'createdAt'; reverse=!reverse">Created Date 
+    <span ng-switch="reverse">
+      <span ng-switch-when="false">Oldest</span>
+      <span ng-switch-when="true">Newest</span>
+    </span></a>
+    <div class="panel panel-default tagsPanel">
+      <div class="panel-body">
+        <span ng-repeat="allTag in allTags">
+          <a href="" class="tag-item" ng-click="addTagInput(allTag)">{{allTag}},</a>
+        </span>
+      </div>
+    </div>
+  
+  </div>
+  
+</div>
+
+<div class="row col-lg-offset-2 col-lg-8 home-list">
+  <div class="well row" infinite-scroll='loadMore()'>
+    <ul class="media-list list-group">
+      <li class="media list-group-item animateLists" ng-repeat="file in filesFiltered = ( files | filter:searchText | tagFilter:tags | orderBy:predicate:reverse ) | limitTo:pageSize">
+        <div class="row">
+          <div class="media-body col-md-7">
+            <a href="{{downloadLink}}{{file.id}}{{token}}" target="blank">
+              <h4 class="media-heading">{{file.filename}}</h4>
+            </a>
+            <label>Tags:</label>&nbsp;<span ng-repeat="tag in file.tags">{{tag}}, </span><br>
+            <label>User:</label>&nbsp;{{file.user.username}}&nbsp;
+            <label>Email:</label>&nbsp;{{file.user.email}}<br>
+            <label>File Size:</label>&nbsp;{{file.size}}&nbsp;
+            <label>Created at:</label>&nbsp;{{file.createdAt}}<br>
+            <label>Download Link:</label>&nbsp;<input type="text" readonly="readonly" value="{{downloadLink}}{{file.id}}" onClick="this.setSelectionRange(0, this.value.length)"/>
+            
+          </div>
+          <div class="media-right media-middle col-md-5" style="text-align:right;">
+            <a class="btn btn-primary" href="{{downloadLink}}{{file.id}}{{token}}" target="blank">Download</a>
+            <a class="btn btn-success" href="mailto:?subject=Shary%20Download%20Service%20({{file.filename}})&body=Download%20Link:%20{{downloadLink}}{{file.id}}" target="blank">Emal</a>
+            <button class="btn btn-warning" ng-if="currentUser.admin" ng-click="deleteFile(file)">
+              Delete
+            </button>
+          </div>
+          
+          
+        </div>
+      </li>
+    </ul>
+    
+  </div>
+
+</div>

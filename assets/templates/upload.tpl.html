@@ -1,0 +1,80 @@
+
+<div class="row col-lg-offset-2 col-lg-8">
+<h2>My Files</h2>
+<button class="btn btn-default" ng-click="openUploadFile()">
+  Upload New File
+</button>
+Your Total Usage: {{currentTotalUsage}} of {{limitUsage}} GB
+<!--<input type="text" ng-model="myModelObj">-->
+<!--<input type="file" ng-file-select="onFileSelect($files)">-->
+<!--<input type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*">-->
+<!--<div class="button" ng-file-select="onFileSelect($files)" data-multiple="true"></div>-->
+<!--
+<div class="drop-box" ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class-name-or-function"
+      ng-show="dropSupported">drop files here</div>
+<div class="drop-box" ng-file-drop-available="dropSupported=true" 
+      ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+-->
+<!--<button ng-click="upload.abort()">Cancel Upload</button>-->
+<br><br>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <span class="glyphicon glyphicon-search"></span>
+    </span>
+    <input ng-model="searchText" type="text" class="form-control" placeholder="Search Keyword">
+  </div>
+  
+  <tags-input ng-model="tags" 
+              placeholder="Search Tags" 
+              replace-spaces-with-dashes="false">
+    <auto-complete source="autoLoadTags($query)" 
+                   min-length="0" 
+                   debounce-delay="0"
+                   max-results-to-show="10"></auto-complete>
+  </tags-input>
+  <label>Sort By:&nbsp;</label><a href="" ng-click="predicate = 'createdAt'; reverse=!reverse">Created Date 
+  <span ng-switch="reverse">
+    <span ng-switch-when="false">Oldest</span>
+    <span ng-switch-when="true">Newest</span>
+  </span></a>
+  <div class="panel panel-default tagsPanel">
+    <div class="panel-body">
+      <span ng-repeat="allTag in allTags">
+        <a href="" class="tag-item" ng-click="addTagInput(allTag)">{{allTag}},</a>
+      </span>
+    </div>
+  </div>
+
+<div class="media animateLists" ng-repeat="file in filesFiltered = ( files | filter:searchText | tagFilter:tags | orderBy:predicate:reverse ) | startFrom:(fileCurrentPage-1)*pageSize | limitTo:pageSize">
+  
+  <div>
+    <a href="{{downloadLink}}{{file.id}}" target="blank">
+      <h4 class="media-body">{{file.filename}}</h4>
+    </a>
+    <label>Tags:</label>&nbsp;<span ng-repeat="tag in file.tags">{{tag.text}}, </span><br>
+    <label>File Size:</label>&nbsp;{{file.size}}&nbsp;
+    <label>Created at:</label>&nbsp;{{file.createdAt}}<br>
+    <label>Download Link:</label>&nbsp;<input type="text" readonly="readonly" value="{{downloadLink}}{{file.id}}" onClick="this.setSelectionRange(0, this.value.length)"/>
+  </div>
+  <div>
+    <button class="btn btn-info btn-sm" ng-init="edit = false" ng-click="edit = ! edit" ng-switch="edit">
+      <span ng-switch-when="false">Edit</span>
+      <span ng-switch-when="true">Close</span>
+    </button>
+    <a class="btn btn-success btn-sm" href="mailto:?subject=Shary%20Download%20Service%20({{file.filename}})&body=Download%20Link:%20{{downloadLink}}{{file.id}}" target="blank">Emal</a>
+    <button class="btn btn-warning btn-sm" ng-click="deleteFile(file)">
+      Delete
+    </button>
+  </div>
+  <div>
+    <div collapse="!edit">
+      <div ng-include src="'templates/uploadForm.tpl.html'" ng-init="fileId = file.id; tags = file.tags; password = file.password"></div>
+    </div>
+    <hr>
+  </div>
+</div>
+
+<pagination total-items="fileTotalItems" items-per-page="pageSize" num-pages="noOfPages" ng-model="fileCurrentPage" max-size="pagerMaxSize" class="pagination-sm" boundary-links="true" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+</div>
+

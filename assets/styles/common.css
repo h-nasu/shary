@@ -1,0 +1,61 @@
+body {
+margin-top: 70px;
+}
+
+.drop-box {
+background: #F8F8F8;
+border: 5px dashed #DDD;
+width: 200px;
+height: 65px;
+text-align: center;
+padding-top: 35px;
+}
+
+tags-input .tags .tag-item {
+color: #000;
+}
+
+div .shary-pager {
+text-align: center;
+}
+
+.animateLists.ng-enter {
+  -webkit-transition: 1s linear all;
+  transition: 1s linear all;
+  opacity:0;
+}
+.animateLists.ng-enter-stagger {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+ 
+  -webkit-transition-duration: 0s;
+  transition-duration: 0s;
+}
+.animateLists.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+.tagsPanel {
+  height: 65px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.home-search {
+position: fixed;
+z-index: 999;
+display: block;
+background-color: #ffffff;
+padding-top: 15px;
+top: 51px;
+max-width: 730px;
+}
+
+.home-list{
+/*top:195px;*/
+top:50px;
+}
+
+.searchBtn {
+ margin-bottom: 10px;
+}
