@@ -3,8 +3,8 @@
 __Shary__ is an open source file sharing platform created with __Sailsjs(Nodejs)__ and __Mongodb__, using __GridFS__ for file storing and streaming.
 
 __Live Demo:__ http://sharydemo.cyber-th.com<br>
-username: 'admin'<br>
-password: 'admin'
+username: admin<br>
+password: admin135
 
 ## Set Up
 
@@ -47,8 +47,41 @@ db.createUser(
    }
 );
 ```
+Below are some settings you can change depending on your environment.
+```javascript
+// config/connections.js
+// mongodb config
+someMongodbServer: {
+  adapter: 'sails-mongo',
+  host: 'localhost',
+  port: 27017,
+  user: '',
+  password: '',
+  database: ''
+},
 
-If need, running port can be changed from config/local.js.<br>
+// config/session.js
+// use mongodb config for session storage
+adapter: 'mongo',
+host: 'localhost',
+port: 27017,
+db: '',
+collection: 'sessions',
+username: '',
+password: '',
+auto_reconnect: true,
+
+// config/local.js
+// If need, running port can be changed from config/local.js.
+port: some_port#
+
+// confog/models.js
+// When running the application for first time, please set the migration mode to 2 (alter).
+// 2(alter) will create needed collections in mongodb for running the sails application.
+// And change the migration to safe after...
+migrate: 'safe'
+```
+
 If you using _Nginx_ or _Apache_ for proxy, max body limit for upload file need to be set.
 ```
 # This is an example setting for Nginx
