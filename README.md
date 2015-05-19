@@ -1,19 +1,19 @@
 # Shary
 
-Shary is an open source file sharing platform created with Sailsjs(Nodejs) and Mongodb, using GridFS for file storing and streaming.
+Shary is an open source file sharing platform created with __Sailsjs(Nodejs)__ and __Mongodb__, using __GridFS__ for file storing and streaming.
 
-__Live Demo:__ http://sharydemo.cyber-th.com
-username: 'admin'
+__Live Demo:__ http://sharydemo.cyber-th.com<br>
+username: 'admin'<br>
 password: 'admin'
 
 ## Set Up
 
-Will Need to install Nodejs and Mongodb in your environment.
+Will Need to install _Nodejs_ and _Mongodb_ in your environment.<br>
 Clone or download source code from repository and install all the dependencies.
 ```
 npm install
 ```
-Create intial user inside Mongodb (can set up db user as you wish)...
+Create intial user inside _Mongodb_ (can set up db user as you wish)...<br>
 Initial user account can be anything but here is just an example.
 ```javascript
 {
@@ -38,8 +38,8 @@ db.user.insert(
   }
 );
 ```
-If need, running port can be changed from config/local.js.
-If you using Nginx or Apache for proxy, max body limit for upload file need to be set.
+If need, running port can be changed from config/local.js.<br>
+If you using _Nginx_ or _Apache_ for proxy, max body limit for upload file need to be set.
 ```
 # This is an example setting for Nginx
 # /etc/nginx/nginx.conf
@@ -58,7 +58,7 @@ Start the application from terminal.
 cd shary
 sails lift
 ```
-You can use foreverjs and nodemon to keep the application running.
+You can use _foreverjs_ and _nodemon_ to keep the application running.<br>
 Make sure you create __.foreverignore__ in the root directory.
 ```
 cd shary
@@ -71,5 +71,5 @@ vi .foreverignore
 forever -w -c nodemon app.js --exitcrash
 ```
 
-You can access your site with...
+You can access your site with...<br>
 http://localhost:port/
