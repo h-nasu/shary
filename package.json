@@ -23,7 +23,7 @@
     "grunt-contrib-less": "0.11.1",
     "grunt-contrib-coffee": "~0.10.1",
     "sails-mongo": "~0.10.4",
-    "skipper-gridfs": "~0..5.2",
+    "skipper-gridfs": "~0.5.2",
     "bcrypt-nodejs": "~0.0.3",
     "connect-mongo": "~0.4.1",
     "gridfs-stream": "~0.5.1",
