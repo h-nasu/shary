@@ -37,6 +37,17 @@ db.user.insert(
   password: 'admin'
 }
 ```
+Below is just an example of creating user for mongodb.
+```javascript
+db.createUser(
+   {
+     user: "username",
+     pwd: "password",
+     roles: [{role:"readWrite", db:"database"}]
+   }
+);
+```
+
 If need, running port can be changed from config/local.js.<br>
 If you using _Nginx_ or _Apache_ for proxy, max body limit for upload file need to be set.
 ```
