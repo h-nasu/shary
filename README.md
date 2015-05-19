@@ -1,6 +1,6 @@
 # Shary
 
-Shary is an open source file sharing platform created with __Sailsjs(Nodejs)__ and __Mongodb__, using __GridFS__ for file storing and streaming.
+__Shary__ is an open source file sharing platform created with __Sailsjs(Nodejs)__ and __Mongodb__, using __GridFS__ for file storing and streaming.
 
 __Live Demo:__ http://sharydemo.cyber-th.com<br>
 username: 'admin'<br>
