@@ -2,6 +2,13 @@
 
 __Shary__ is an open source file sharing platform created with __Sailsjs(Nodejs)__ and __Mongodb__, using __GridFS__ for file storing and streaming.
 
+* Web Server: __Nginx__
+* Web Programming Language: __Nodejs__
+* Nodejs Framework: __Sailsjs__
+* Database: __Mongodb__
+* Frontend Javascript Framework: __Angularjs__
+* Frontend Styling: __Bootstrap__
+
 __Live Demo:__ http://sharydemo.cyber-th.com<br>
 username: admin<br>
 password: admin135
