@@ -70,10 +70,10 @@ module.exports.session = {
   adapter: 'mongo',
   host: 'localhost',
   port: 27017,
-  db: 'shary',
+  db: '',
   collection: 'sessions',
-  username: 'shary',
-  password: 'shary1',
+  username: '',
+  password: '',
   auto_reconnect: true,
 
   /***************************************************************************
