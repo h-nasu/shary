@@ -16,13 +16,6 @@ npm install
 Create intial user inside _Mongodb_ (can set up db user as you wish)...<br>
 Initial user account can be anything but here is just an example.
 ```javascript
-{
-  username: 'admin',
-  password: 'admin'
-}
-```
-
-```javascript
 use yourDatabase;
 
 db.user.insert(
@@ -37,6 +30,12 @@ db.user.insert(
     "user_id" : "54b9f5ce2df9147127007652" 
   }
 );
+
+// This will create...
+{
+  username: 'admin',
+  password: 'admin'
+}
 ```
 If need, running port can be changed from config/local.js.<br>
 If you using _Nginx_ or _Apache_ for proxy, max body limit for upload file need to be set.
