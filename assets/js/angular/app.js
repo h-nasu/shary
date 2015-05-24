@@ -1,7 +1,5 @@
 'use strict';
 
-// angular.element($0).scope()
-// var apiUrl = 'http://node.icat.co.th:85';
 var apiUrl = 'http://'+document.location.host;
 var downloadLink = apiUrl+'/file/download/'
 var token;

@@ -2,9 +2,16 @@
 
 __Shary__ is an open source file sharing platform created with __Sailsjs(Nodejs)__ and __Mongodb__, using __GridFS__ for file storing and streaming.
 
+* Web Server: __Nginx__
+* Web Programming Language: __Nodejs__
+* Nodejs Framework: __Sailsjs__
+* Database: __Mongodb__
+* Frontend Javascript Framework: __Angularjs__
+* Frontend Styling: __Bootstrap__
+
 __Live Demo:__ http://sharydemo.cyber-th.com<br>
-username: 'admin'<br>
-password: 'admin'
+username: admin<br>
+password: admin135
 
 ## Set Up
 
@@ -37,7 +44,51 @@ db.user.insert(
   password: 'admin'
 }
 ```
-If need, running port can be changed from config/local.js.<br>
+Below is just an example of creating user for mongodb.
+```javascript
+db.createUser(
+   {
+     user: "username",
+     pwd: "password",
+     roles: [{role:"readWrite", db:"database"}]
+   }
+);
+```
+Below are some settings you can change depending on your environment.
+```javascript
+// config/connections.js
+// mongodb config
+someMongodbServer: {
+  adapter: 'sails-mongo',
+  host: 'localhost',
+  port: 27017,
+  user: '',
+  password: '',
+  database: ''
+},
+
+// config/session.js
+// use mongodb config for session storage
+adapter: 'mongo',
+host: 'localhost',
+port: 27017,
+db: '',
+collection: 'sessions',
+username: '',
+password: '',
+auto_reconnect: true,
+
+// config/local.js
+// If need, running port can be changed from config/local.js.
+port: some_port#
+
+// confog/models.js
+// When running the application for first time, please set the migration mode to 2 (alter).
+// 2(alter) will create needed collections in mongodb for running the sails application.
+// And change the migration to safe after...
+migrate: 'safe'
+```
+
 If you using _Nginx_ or _Apache_ for proxy, max body limit for upload file need to be set.
 ```
 # This is an example setting for Nginx
