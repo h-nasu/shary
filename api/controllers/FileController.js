@@ -23,6 +23,7 @@ var ObjectID = require('mongodb').ObjectID;
 var MongoClient = require('mongodb').MongoClient;
 // var Server = require('mongodb').Server;
 var maxLimitSpace = 20 * 1000 * 1000 * 1000;
+var contentDisposition = require('content-disposition');
 
 module.exports = {
 	find: function(req, res) {
@@ -255,7 +256,7 @@ function DownloadStreamGridFile(req, res, GridFile, file) {
  
     // stream back whole fileres.header('Content-disposition', 'filename=' + file.filename);
     if (!file.type.match(/audio|video|image/)) {
-      res.header('Content-disposition', 'attachment; filename=' + file.filename);
+      res.header('Content-disposition', contentDisposition(file.filename));
     }
     
     res.header('Content-Type', file.type);
