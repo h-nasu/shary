@@ -99,7 +99,7 @@ http {
   # Set the max body size limit
   # 1M -> 1 megabyte
   # 0 -> do not set the limit
-  client_max_body_size 0
+  client_max_body_size 0;
   ...
 }
 ```
