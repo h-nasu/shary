@@ -9,7 +9,7 @@ __Shary__ is an open source file sharing platform created with __Sailsjs(Nodejs)
 * Frontend Javascript Framework: __Angularjs__
 * Frontend Styling: __Bootstrap__
 
-__Live Demo:__ http://sharydemo.cyber-th.com<br>
+__Live Demo:__ http://sharydemo-hnasu.rhcloud.com/<br>
 username: admin<br>
 password: admin135
 
