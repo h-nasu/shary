@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Shary by h-nasu</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/h-nasu/shary">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Shary</h1>
+            <h2>open source file sharing platform. (nodejs, mongodb, and gridfs)</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/h-nasu/shary/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/h-nasu/shary/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a id="shary" class="anchor" href="#shary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shary</h1>
+
+<p><strong>Shary</strong> is an open source file sharing platform created with <strong>Sailsjs(Nodejs)</strong> and <strong>Mongodb</strong>, using <strong>GridFS</strong> for file storing and streaming.</p>
+
+<ul>
+<li>Web Server: <strong>Nginx</strong>
+</li>
+<li>Web Programming Language: <strong>Nodejs</strong>
+</li>
+<li>Nodejs Framework: <strong>Sailsjs</strong>
+</li>
+<li>Database: <strong>Mongodb</strong>
+</li>
+<li>Frontend Javascript Framework: <strong>Angularjs</strong>
+</li>
+<li>Frontend Styling: <strong>Bootstrap</strong>
+</li>
+</ul>
+
+<p><strong>Live Demo:</strong> <a href="http://sharydemo-hnasu.rhcloud.com/">http://sharydemo-hnasu.rhcloud.com/</a><br>
+username: admin<br>
+password: admin135</p>
+
+<h2>
+<a id="set-up" class="anchor" href="#set-up" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set Up</h2>
+
+<p>Will Need to install <em>Nodejs</em> and <em>Mongodb</em> in your environment.<br>
+Clone or download source code from repository and install all the dependencies.</p>
+
+<pre><code>npm install
+</code></pre>
+
+<p>Create intial user inside <em>Mongodb</em> (can set up db user as you wish)...<br>
+Initial user account can be anything but here is just an example.</p>
+
+<div class="highlight highlight-javascript"><pre>use yourDatabase;
+
+db.user.insert(
+  { 
+    <span class="pl-s"><span class="pl-pds">"</span>_id<span class="pl-pds">"</span></span> <span class="pl-k">:</span> ObjectId(<span class="pl-s"><span class="pl-pds">"</span>54b9f5ce2df9147127007652<span class="pl-pds">"</span></span>), 
+    <span class="pl-s"><span class="pl-pds">"</span>username<span class="pl-pds">"</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>admin<span class="pl-pds">"</span></span>, 
+    <span class="pl-s"><span class="pl-pds">"</span>password<span class="pl-pds">"</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>$2a$10$VYm8D8gpt3lVKwtD7VHxL.PkFpWHBpJuISv4gLMRAFffp/mZ1YmlW<span class="pl-pds">"</span></span>, 
+    <span class="pl-s"><span class="pl-pds">"</span>email<span class="pl-pds">"</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>admin@admin.com<span class="pl-pds">"</span></span>, 
+    <span class="pl-s"><span class="pl-pds">"</span>admin<span class="pl-pds">"</span></span> <span class="pl-k">:</span> <span class="pl-c1">true</span>, 
+    <span class="pl-s"><span class="pl-pds">"</span>spaceLimit<span class="pl-pds">"</span></span> <span class="pl-k">:</span> <span class="pl-c1">2</span>, 
+    <span class="pl-s"><span class="pl-pds">"</span>totalUsage<span class="pl-pds">"</span></span> <span class="pl-k">:</span> <span class="pl-c1">0</span>, 
+    <span class="pl-s"><span class="pl-pds">"</span>user_id<span class="pl-pds">"</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>54b9f5ce2df9147127007652<span class="pl-pds">"</span></span> 
+  }
+);
+
+<span class="pl-c">// This will create...</span>
+{
+  username<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>admin<span class="pl-pds">'</span></span>,
+  password<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>admin<span class="pl-pds">'</span></span>
+}</pre></div>
+
+<p>Below is just an example of creating user for mongodb.</p>
+
+<div class="highlight highlight-javascript"><pre>db.createUser(
+   {
+     user<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>username<span class="pl-pds">"</span></span>,
+     pwd<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>password<span class="pl-pds">"</span></span>,
+     roles<span class="pl-k">:</span> [{role<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">"</span>readWrite<span class="pl-pds">"</span></span>, db<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">"</span>database<span class="pl-pds">"</span></span>}]
+   }
+);</pre></div>
+
+<p>Below are some settings you can change depending on your environment.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// config/connections.js</span>
+<span class="pl-c">// mongodb config</span>
+someMongodbServer<span class="pl-k">:</span> {
+  adapter<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>sails-mongo<span class="pl-pds">'</span></span>,
+  host<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>localhost<span class="pl-pds">'</span></span>,
+  port<span class="pl-k">:</span> <span class="pl-c1">27017</span>,
+  user<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+  password<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+  database<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
+},
+
+<span class="pl-c">// config/session.js</span>
+<span class="pl-c">// use mongodb config for session storage</span>
+adapter<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>mongo<span class="pl-pds">'</span></span>,
+host<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>localhost<span class="pl-pds">'</span></span>,
+port<span class="pl-k">:</span> <span class="pl-c1">27017</span>,
+db<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+collection<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>sessions<span class="pl-pds">'</span></span>,
+username<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+password<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+auto_reconnect<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+
+<span class="pl-c">// config/local.js</span>
+<span class="pl-c">// If need, running port can be changed from config/local.js.</span>
+port<span class="pl-k">:</span> some_port#
+
+<span class="pl-c">// confog/models.js</span>
+<span class="pl-c">// When running the application for first time, please set the migration mode to 2 (alter).</span>
+<span class="pl-c">// 2(alter) will create needed collections in mongodb for running the sails application.</span>
+<span class="pl-c">// And change the migration to safe after...</span>
+migrate<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>safe<span class="pl-pds">'</span></span></pre></div>
+
+<p>If you using <em>Nginx</em> or <em>Apache</em> for proxy, max body limit for upload file need to be set.</p>
+
+<pre><code># This is an example setting for Nginx
+# /etc/nginx/nginx.conf
+
+http {
+  ...
+  # Set the max body size limit
+  # 1M -&gt; 1 megabyte
+  # 0 -&gt; do not set the limit
+  client_max_body_size 0;
+  ...
+}
+</code></pre>
+
+<p>Start the application from terminal.</p>
+
+<pre><code>cd shary
+sails lift
+</code></pre>
+
+<p>You can use <em>foreverjs</em> and <em>nodemon</em> to keep the application running.<br>
+Make sure you create <strong>.foreverignore</strong> in the root directory.</p>
+
+<pre><code>cd shary
+vi .foreverignore
+
+# insert below to .foreverignore
+**/.tmp/**
+
+# stop the application and re-run it with below command
+forever -w -c nodemon app.js --exitcrash
+</code></pre>
+
+<p>You can access your site with...<br>
+http://localhost:port/</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/h-nasu">h-nasu</a> can be found on <a href="https://github.com/h-nasu/shary">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
